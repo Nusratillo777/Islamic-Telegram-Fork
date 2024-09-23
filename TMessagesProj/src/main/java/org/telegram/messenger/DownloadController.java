@@ -7,7 +7,7 @@
  */
 
 package org.telegram.messenger;
-
+import  smd.telegram.islamic.R;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

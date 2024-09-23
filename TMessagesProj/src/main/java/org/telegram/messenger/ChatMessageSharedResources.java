@@ -3,7 +3,7 @@ package org.telegram.messenger;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-
+import  smd.telegram.islamic.R;
 public class ChatMessageSharedResources {
 
     public Context context;

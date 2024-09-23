@@ -2,7 +2,7 @@ package org.telegram.ui.Components.Premium.boosts.cells;
 
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.BotWebViewVibrationEffect;
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

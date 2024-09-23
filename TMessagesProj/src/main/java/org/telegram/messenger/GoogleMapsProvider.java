@@ -35,6 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import smd.telegram.islamic.R;
+
 public class GoogleMapsProvider implements IMapsProvider {
 
     @Override

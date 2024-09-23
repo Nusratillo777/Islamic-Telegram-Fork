@@ -21,7 +21,7 @@ import org.telegram.messenger.HashtagSearchController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.ui.ActionBar.AlertDialog;
 import org.telegram.ui.ActionBar.Theme;
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 
 import java.util.ArrayList;
 

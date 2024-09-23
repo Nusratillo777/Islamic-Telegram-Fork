@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 import org.telegram.tgnet.TLRPC;
 
 public class StarAppsSheet extends BottomSheetWithRecyclerListView {

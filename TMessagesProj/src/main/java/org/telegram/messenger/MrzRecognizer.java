@@ -17,7 +17,6 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.util.Calendar;
 import java.util.HashMap;
-
 public class MrzRecognizer {
 
 	public static Result recognize(Bitmap bitmap, boolean tryDriverLicenseFirst) {

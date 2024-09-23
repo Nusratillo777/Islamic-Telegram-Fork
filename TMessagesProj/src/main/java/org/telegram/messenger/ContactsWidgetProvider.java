@@ -16,6 +16,8 @@ import org.telegram.ui.LaunchActivity;
 
 import java.util.ArrayList;
 
+import smd.telegram.islamic.R;
+
 public class ContactsWidgetProvider extends AppWidgetProvider {
 
     @Override

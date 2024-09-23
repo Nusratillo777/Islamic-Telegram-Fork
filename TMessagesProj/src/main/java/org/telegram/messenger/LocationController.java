@@ -39,6 +39,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import smd.telegram.islamic.R;
+
 @SuppressLint("MissingPermission")
 public class LocationController extends BaseController implements NotificationCenter.NotificationCenterDelegate, ILocationServiceProvider.IAPIConnectionCallbacks, ILocationServiceProvider.IAPIOnConnectionFailedListener {
 

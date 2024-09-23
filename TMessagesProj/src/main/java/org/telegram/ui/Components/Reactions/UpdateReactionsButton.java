@@ -6,7 +6,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.ColoredImageSpan;
 import org.telegram.ui.Stories.recorder.ButtonWithCounterView;

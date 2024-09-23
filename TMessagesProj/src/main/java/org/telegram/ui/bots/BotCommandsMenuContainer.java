@@ -22,7 +22,7 @@ import androidx.core.view.NestedScrollingParentHelper;
 import androidx.core.view.ViewCompat;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.CubicBezierInterpolator;
 import org.telegram.ui.Components.RecyclerListView;

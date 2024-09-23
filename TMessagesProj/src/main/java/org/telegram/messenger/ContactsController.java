@@ -7,7 +7,7 @@
  */
 
 package org.telegram.messenger;
-
+import  smd.telegram.islamic.R;
 import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;

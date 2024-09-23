@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 
 import org.checkerframework.checker.guieffect.qual.UI;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 import org.telegram.messenger.UserObject;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.AlertDialog;

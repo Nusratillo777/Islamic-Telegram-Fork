@@ -22,6 +22,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 
+import smd.telegram.islamic.R;
+
 public class SavedMessagesController {
 
     private final int currentAccount;

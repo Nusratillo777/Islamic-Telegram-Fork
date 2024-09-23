@@ -31,7 +31,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-
+import  smd.telegram.islamic.R;
 public class ChatObject {
 
     public static final int CHAT_TYPE_CHAT = 0;

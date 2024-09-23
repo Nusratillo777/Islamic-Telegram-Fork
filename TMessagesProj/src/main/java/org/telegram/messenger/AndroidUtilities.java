@@ -9,7 +9,7 @@
 package org.telegram.messenger;
 
 import static org.telegram.messenger.LocaleController.getString;
-
+import  smd.telegram.islamic.R;
 import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

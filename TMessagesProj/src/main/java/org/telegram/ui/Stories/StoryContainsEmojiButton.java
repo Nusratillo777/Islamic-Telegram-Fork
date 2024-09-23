@@ -26,7 +26,7 @@ import org.telegram.messenger.BotWebViewVibrationEffect;
 import org.telegram.messenger.FileRefController;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaDataController;
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;

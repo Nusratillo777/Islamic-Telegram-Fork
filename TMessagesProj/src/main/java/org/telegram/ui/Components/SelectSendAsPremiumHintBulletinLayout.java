@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 import org.telegram.ui.ActionBar.Theme;
 
 @SuppressLint("ViewConstructor")

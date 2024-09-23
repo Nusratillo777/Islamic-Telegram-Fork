@@ -17,6 +17,8 @@ import org.telegram.ui.Components.BackupImageView;
 
 import java.util.ArrayList;
 
+import smd.telegram.islamic.R;
+
 public class DialogObject {
 
     public static boolean isChannel(TLRPC.Dialog dialog) {

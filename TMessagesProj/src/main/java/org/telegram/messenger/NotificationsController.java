@@ -7,7 +7,7 @@
  */
 
 package org.telegram.messenger;
-
+import  smd.telegram.islamic.R;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;

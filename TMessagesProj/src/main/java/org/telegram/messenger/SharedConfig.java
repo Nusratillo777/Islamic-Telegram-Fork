@@ -50,6 +50,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
+import smd.telegram.islamic.R;
+
 public class SharedConfig {
     /**
      * V2: Ping and check time serialized

@@ -53,6 +53,8 @@ import org.telegram.ui.LaunchActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import smd.telegram.islamic.R;
+
 public class FactCheckController {
 
     private static volatile FactCheckController[] Instance = new FactCheckController[UserConfig.MAX_ACCOUNT_COUNT];

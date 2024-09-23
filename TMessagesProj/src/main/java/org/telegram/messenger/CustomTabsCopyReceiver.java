@@ -13,6 +13,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import smd.telegram.islamic.R;
+
 public class CustomTabsCopyReceiver extends BroadcastReceiver {
 
     @Override

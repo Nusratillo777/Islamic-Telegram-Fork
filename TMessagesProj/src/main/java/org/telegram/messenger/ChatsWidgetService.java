@@ -32,6 +32,8 @@ import org.telegram.ui.EditWidgetActivity;
 import java.io.File;
 import java.util.ArrayList;
 
+import smd.telegram.islamic.R;
+
 public class ChatsWidgetService extends RemoteViewsService {
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {

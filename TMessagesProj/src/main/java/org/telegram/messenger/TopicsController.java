@@ -28,6 +28,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
+import smd.telegram.islamic.R;
+
 public class TopicsController extends BaseController {
 
     public static final int TOPIC_FLAG_TITLE = 1;

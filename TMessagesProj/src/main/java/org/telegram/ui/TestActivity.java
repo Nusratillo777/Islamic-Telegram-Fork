@@ -13,7 +13,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import org.telegram.messenger.R;
+import smd.telegram.islamic.R;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.webrtc.Camera1Enumerator;

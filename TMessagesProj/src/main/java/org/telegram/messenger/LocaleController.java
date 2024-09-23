@@ -46,6 +46,8 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import smd.telegram.islamic.R;
+
 public class LocaleController {
 
     static final int QUANTITY_OTHER = 0x0000;

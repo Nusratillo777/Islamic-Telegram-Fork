@@ -7,7 +7,7 @@
  */
 
 package org.telegram.messenger;
-
+import  smd.telegram.islamic.R;
 import static org.telegram.messenger.MessagesController.LOAD_AROUND_DATE;
 import static org.telegram.messenger.MessagesController.LOAD_AROUND_MESSAGE;
 import static org.telegram.messenger.MessagesController.LOAD_BACKWARD;

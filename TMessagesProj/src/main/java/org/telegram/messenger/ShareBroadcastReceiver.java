@@ -12,6 +12,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import smd.telegram.islamic.R;
+
 public class ShareBroadcastReceiver extends BroadcastReceiver {
 
     @Override

@@ -16,6 +16,8 @@ import com.android.billingclient.api.ProductDetails;
 
 import java.util.Objects;
 
+import smd.telegram.islamic.BuildConfig;
+
 public class BuildVars {
 
     public static boolean DEBUG_VERSION = BuildConfig.DEBUG_VERSION;

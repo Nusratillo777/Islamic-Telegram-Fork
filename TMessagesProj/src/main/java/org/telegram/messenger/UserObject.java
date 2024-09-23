@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import org.telegram.PhoneFormat.PhoneFormat;
 import org.telegram.tgnet.TLRPC;
 
+import smd.telegram.islamic.R;
+
 public class UserObject {
 
     public static final long REPLY_BOT = 1271266957L;
