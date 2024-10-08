@@ -8016,4 +8016,8 @@
     <string name="BoostReasonGiveaway">Giveaway</string>
     <string name="BoostDate">Date</string>
     <string name="BoostUntil">Until</string>
+    <string name="HiddenPasscode">Hidden Chat Passcode Lock</string>
+    <string name="PrayTimes">Pray times</string>
+    <string name="PraySettings">Pray settings</string>
+    <string name="ReEnterYourPasscode">Re-enter your new passcode</string>
 </resources>

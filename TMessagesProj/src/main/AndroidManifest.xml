@@ -111,7 +111,36 @@
         android:usesCleartextTraffic="true"
     >
         <!-- usesCleartextTraffic for browser supporting opening http:// links -->
+        <activity
+            android:name="org.telegram.ui.PraySettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name="org.telegram.ui.PrayNotificationsActivity"
+            android:exported="false" />
 
+        <service
+            android:name="org.telegram.messenger.components.notifications.LocationService"
+            android:enabled="true"
+            android:exported="true" />
+        <receiver
+            android:name="org.telegram.messenger.components.notifications.RestartBackgroundService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="restartservice" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="org.telegram.ui.PrayCalculationMethodActivity"
+            android:exported="false" />
+        <activity
+            android:name="org.telegram.ui.HiddenPasscodeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="org.telegram.ui.PrayChangeTimeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity-alias
             android:enabled="true"
             android:name="org.telegram.messenger.DefaultIcon"

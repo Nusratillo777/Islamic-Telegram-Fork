@@ -419,6 +419,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     private int undoViewIndex;
     private UndoView[] undoView = new UndoView[2];
     private FilterTabsView filterTabsView;
+    private PrayTimesView prayTimesView;
     private boolean askingForPermissions;
     private RLottieDrawable passcodeDrawable;
     private int searchViewPagerIndex;
@@ -1144,6 +1145,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                             if (dialogsHintCell != null && dialogsHintCell.getVisibility() == View.VISIBLE) {
                                 h += dialogsHintCell.getMeasuredHeight();
                             }
+                            if (prayTimesView != null && prayTimesView.getVisibility() == View.VISIBLE) {
+                                h += prayTimesView.getMeasuredHeight();
+                            }
                             if (authHintCell != null && authHintCell.getVisibility() == View.VISIBLE) {
                                 h += authHintCell.getMeasuredHeight();
                             }
@@ -1153,6 +1157,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                     if (dialogsHintCell != null) {
                         h -= dialogsHintCell.height();
+                    }
+                    if (prayTimesView != null) {
+                        h -= prayTimesView.getHeight1();
                     }
                     h += actionModeAdditionalHeight;
                     if (filtersTabAnimator != null && (hasStories || (filterTabsView != null && filterTabsView.getVisibility() == VISIBLE))) {
@@ -1300,6 +1307,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     childTop += topPadding;
                     if (dialogsHintCell != null) {
                         childTop += dialogsHintCell.height();
+                    }
+                    if (prayTimesView != null) {
+                        childTop += prayTimesView.getHeight1();
                     }
                 } else if (child == dialogsHintCell || child instanceof FragmentContextView || child == authHintCell) {
                     childTop += actionBar.getMeasuredHeight();
@@ -3028,6 +3038,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         wasDrawn = false;
         pacmanAnimation = null;
         filterTabsView = null;
+        prayTimesView = null;
         selectedDialogs.clear();
 
         maximumVelocity = ViewConfiguration.get(context).getScaledMaximumFlingVelocity();
@@ -3095,6 +3106,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
             @Override
             public void onSearchExpand() {
+                if (prayTimesView != null) prayTimesView.hide(true);
                 searching = true;
                 if (switchItem != null) {
                     switchItem.setVisibility(View.GONE);
@@ -3158,6 +3170,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
             @Override
             public void onSearchCollapse() {
+                if (prayTimesView != null) prayTimesView.hide(false);
                 searching = false;
                 searchWas = false;
                 if (viewPages[0] != null) {
@@ -3680,6 +3693,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         return;
                     }
                     SharedConfig.appLocked = true;
+                    SharedConfig.passByHiddenPasscode = false;
                     SharedConfig.saveConfig();
                     int[] position = new int[2];
                     passcodeItem.getLocationInWindow(position);
@@ -4648,6 +4662,31 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 updateDialogsHint();
             });
             contentView.addView(dialogsHintCell);
+            prayTimesView = new PrayTimesView(context);
+            prayTimesView.setBackgroundColor1(Theme.getColor(Theme.key_windowBackgroundWhite, resourceProvider));
+            prayTimesView.updateLocation();
+            prayTimesView.setValueChangeListener((oldValue) -> {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    Activity activity = getParentActivity();
+                    if (activity != null) {
+                        if (oldValue){
+                            prayTimesView.restoreLocation(getParentActivity());
+                        }else
+                        if (activity.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            prayTimesView.restoreLocation(getParentActivity());
+                        }
+                        else {
+                            prayTimesView.checkAlarmPermission();
+                            prayTimesView.updateLocation();
+                        }
+                    }
+                } else {
+                    prayTimesView.updateLocation();
+                }
+                return null;
+            });
+            contentView.addView(prayTimesView);
+
         } else if (initialDialogsType == DIALOGS_TYPE_FORWARD) {
             if (commentView != null) {
                 commentView.onDestroy();
@@ -5011,7 +5050,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                                     name = name.substring(0, index);
                                 }
                                 BulletinFactory.of(DialogsActivity.this).createUsersBulletin(Arrays.asList(user), AndroidUtilities.replaceTags(LocaleController.formatString("NotificationsStoryMutedHint", R.string.NotificationsStoryMutedHint, name))).show();
-                            }).makeMultiline(false).addIf(muted && dialogId > 0, R.drawable.msg_unmute, LocaleController.getString(R.string.NotificationsStoryUnmute2), () -> {
+                            }).makeMultiline(false).addIf(muted && dialogId > 0, R.drawable.msg_unmute, LocaleController.getString("NotificationsStoryUnmute2", R.string.NotificationsStoryUnmute2), () -> {
                                 MessagesController.getNotificationsSettings(currentAccount).edit().putBoolean("stories_" + key, true).apply();
                                 getNotificationsController().updateServerNotificationsSettings(dialogId, 0);
                                 TLRPC.User user = MessagesController.getInstance(currentAccount).getUser(dialogId);
@@ -5522,6 +5561,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
         if (dialogsHintCell != null && dialogsHintCell.getVisibility() == View.VISIBLE) {
             h += dialogsHintCell.getMeasuredHeight();
+        }
+        if (prayTimesView != null && prayTimesView.getVisibility() == View.VISIBLE) {
+            h += prayTimesView.getMeasuredHeight();
         }
         if (authHintCell != null && authHintCellVisible) {
             h += authHintCell.getMeasuredHeight();
@@ -6400,6 +6442,13 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
             dialogsHintCell.setTranslationY(totalOffset);
             totalOffset += dialogsHintCell.getMeasuredHeight() * (1f - searchAnimationProgress);
+        }
+        if (prayTimesView != null && prayTimesView.getVisibility() == View.VISIBLE) {
+            if (rightSlidingDialogContainer != null && rightSlidingDialogContainer.hasFragment()) {
+                totalOffset -= prayTimesView.getMeasuredHeight() * rightSlidingDialogContainer.openedProgress;
+            }
+            prayTimesView.setTranslationY(totalOffset + actionBar.getMeasuredHeight());
+            totalOffset += prayTimesView.getMeasuredHeight() * (1f - searchAnimationProgress);
         }
         if (authHintCell != null && authHintCell.getVisibility() == View.VISIBLE) {
             if (rightSlidingDialogContainer != null && rightSlidingDialogContainer.hasFragment()) {
@@ -10893,8 +10942,25 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
 
     private ArrayList<TLRPC.Dialog> botShareDialogs;
 
+    //handle hidden dialogs
     @NonNull
     public ArrayList<TLRPC.Dialog> getDialogsArray(int currentAccount, int dialogsType, int folderId, boolean frozen) {
+        ArrayList<TLRPC.Dialog> array1 = getDialogsArray1(currentAccount,dialogsType,folderId,frozen);
+        ArrayList<TLRPC.Dialog> newArray = new ArrayList<TLRPC.Dialog>();
+        if (SharedConfig.hiddenPasscodeHash.length() != 0 && !SharedConfig.passByHiddenPasscode) {
+            for (int k = 0; k < array1.size(); k++) {
+                TLRPC.Dialog dialog = array1.get(k);
+                boolean hidden = MessagesController.getInstance(currentAccount).isDialogHidden(dialog.id);
+                if (!hidden) newArray.add(dialog);
+            }
+        } else {
+            newArray.addAll(array1);
+        }
+        return newArray;
+    }
+
+    @NonNull
+    public ArrayList<TLRPC.Dialog> getDialogsArray1(int currentAccount, int dialogsType, int folderId, boolean frozen) {
         if (frozen && frozenDialogsList != null) {
             return frozenDialogsList;
         }
